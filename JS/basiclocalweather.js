@@ -16,7 +16,7 @@ function displayWeather() {
           const condition = data.current.condition.text;
           const condition_icon = data.current.condition.icon;
           const location = data.location.name;
-          weatherDiv.innerHTML = `<img src="${condition_icon}"> ${location} feels like ${feelslike_c}°C (${feelslike_f}°F )`;
+          weatherDiv.innerHTML = `<img class="weathericon" src="${condition_icon}"> ${location} feels like ${feelslike_c}°C (${feelslike_f}°F)`;
         })
         .catch(error => {
           console.error('Error fetching weather data:', error);
