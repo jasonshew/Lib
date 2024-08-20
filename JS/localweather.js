@@ -5,12 +5,10 @@ function displayWeather() {
     navigator.geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
-
-      // Fetch weather data from WeatherAPI
       fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}`)
         .then(response => response.json())
         .then(data => {
-          const weatherDiv = document.getElementById('weather');
+          const weatherDiv = document.getElementById('localWeather');
           const temperature_c = data.current.temp_c;
           const temperature_f = data.current.temp_f;
           const feelslike_c = data.current.feelslike_c;
@@ -22,7 +20,7 @@ function displayWeather() {
         })
         .catch(error => {
           console.error('Error fetching weather data:', error);
-          document.getElementById('weather').innerHTML = 'Unable to retrieve weather data.';
+          document.getElementById('localWeather').innerHTML = 'Unable to retrieve weather data.';
         });
     }, error => {
       console.error('Error getting location:', error);
