@@ -1,4 +1,12 @@
-const apiKey = "4d6a2621f6f84a82a79121544231203";
+let apiKey;
+fetch('https://link.jbear.cc/weather_api_proxy.php')
+    .then(response => response.json())
+    .then(data => {
+        apiKey = data.api_key;
+    })
+    .catch(error => {
+        console.error('Error fetching the API key:', error);
+    });
 
 function displayWeather() {
   if (navigator.geolocation) {
